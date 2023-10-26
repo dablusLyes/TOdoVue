@@ -26,15 +26,17 @@ defineEmits(["toggle-complete","edit-todo","update-todo","delete-todo"])
             <span v-else :class="{'completed-todo' : todo.isCompleted}">
                 {{ todo.todo }}
             </span>
+          </div>
             <div class="todo-actions">
-                 <Icon @click="$emit('edit-todo',index)" v-if="todo.isEditing" class="icon validate" color="#41b080" icon="material-symbols:check-circle-outline" />
-                 <Icon @click="$emit('edit-todo',index)" v-else class="icon edit" color="#41b080" icon="basil:edit-outline" />
-                 <Icon @click="$emit('delete-todo',index)" class="icon delete" color="red" icon="typcn:delete-outline" />
+                 <Icon width="22"  class="icon" @click="$emit('edit-todo',index)" v-if="todo.isEditing"  color="#41b080" icon="ph:check-circle" />
+                 <Icon width="22" class="icon" @click="$emit('edit-todo',index)" v-else color="#41b080" icon="ph:pencil-fill" />
+                 <Icon width="22"  class="icon" @click="$emit('delete-todo',index)" color="red" icon="ph:trash" />
             </div>
-        </div>
 
     </li>
 </template>
+
+
 <style lang="scss" scoped>
 li {
   display: flex;
@@ -57,7 +59,7 @@ li {
     height: 20px;
     background-color: #fff;
     border-radius: 50%;
-    box-shadow: 0 4px 6px 5px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 
     &:checked {
       background-color: #41b080;
@@ -67,13 +69,14 @@ li {
   .todo {
     flex: 1;
 
+    .completed-todo {
+      text-decoration: line-through;
+    }
+
     input[type="text"] {
       width: 100%;
       padding: 2px 6px;
       border: 2px solid #41b080;
-    }
-    .completed-todo{
-      text-decoration: line-through;
     }
   }
 

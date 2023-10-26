@@ -20,7 +20,7 @@
         }
 
         todoState.invalid = true;
-        todoState.errMsg = "Todo value cannot be empty"
+        todoState.errMsg = "Todo Can't be empty"
     }
 
 
@@ -31,7 +31,7 @@
     <div>
         <div class="input-wrap"  @keyup.enter="createTodo()" :class="{ 'inputErr' : todoState.invalid }">
             <input type="text" v-model="todoState.todo">
-            <TodoButton @click="createTodo()" > ➡️ </TodoButton>
+            <TodoButton @click="createTodo()" > Create  </TodoButton>
         </div>
     </div>
     <p  v-show="todoState.invalid" class="errMsg">{{ todoState.errMsg }}</p>
@@ -42,6 +42,10 @@
   display: flex;
   transition: 250ms ease;
   border: 2px solid #41b080;
+
+  &.input-err {
+    border-color: red;
+  }
 
   &:focus-within {
     box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1),
@@ -57,13 +61,17 @@
       outline: none;
     }
   }
-}
-.errMsg{
-    color: red;
-    text-align: center;
-}
-.inputErr{
-    border: 2px solid rgb(184, 77, 77);
+
+  button {
+    padding: 8px 16px;
+    border: none;
+  }
 }
 
+.err-msg {
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: center;
+  color: red;
+}
 </style>

@@ -79,6 +79,7 @@ fetchTodolist();
 </template>
 
 
+
 <style scoped lang="scss">
 main {
   display: flex;
@@ -92,7 +93,7 @@ main {
     margin-bottom: 16px;
     text-align: center;
   }
-}
+
   .todo-list {
     display: flex;
     flex-direction: column;
@@ -108,4 +109,5 @@ main {
     gap: 8px;
     margin-top: 24px;
   }
+}
 </style>
