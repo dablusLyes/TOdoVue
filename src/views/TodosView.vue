@@ -9,7 +9,7 @@ const todoList = ref([])
 watch(todoList, () => { setTodoListLocalStorage(); }, {
   deep: true,
 })
-
+let hovered = ref(false)
 const todoComputed = computed(() => {
   return todoList.value.every((todo=>todo.isCompleted))
 })
@@ -27,10 +27,6 @@ const setTodoListLocalStorage = () => {
     })
   }
 
-
-
-  
-
 const fetchTodolist = () => {
   const savedTodoList = JSON.parse(localStorage.getItem("todoList"))
   if (savedTodoList) {
@@ -38,7 +34,6 @@ const fetchTodolist = () => {
   }
 
 }
-
 
 const toggleTodoComplete = (todoPos) => {
   todoList.value[todoPos].isCompleted = !todoList.value[todoPos].isCompleted
@@ -53,7 +48,6 @@ const updateTodo = (todoVal, index) => {
 const deleteTodo = (index) => {
   todoList.value.splice(index,1)
 }
-
 
 fetchTodolist();
 
@@ -74,11 +68,9 @@ fetchTodolist();
       />
     </ul>
     <p v-if="todoList.length<=0" class="todos-msg">😔 No todo's </p>
-    <p v-else-if="todoComputed" class="todos-msg"> <img src='../assets/gar.png' style="height: 25px;" > you've taken care of everything ! </p>
+    <p v-else-if="todoComputed" class="todos-msg"> <span @mouseover="hovered = true" class="todos-msg-icon"> <img v-if="hovered" src='../assets/gar.png' style="height: 25px;" > <p style="font-size: 1.4em;" v-else> 👍 </p> </span> you've taken care of everything ! </p>
   </main>
 </template>
-
-
 
 <style scoped lang="scss">
 main {
