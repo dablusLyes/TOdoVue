@@ -2,14 +2,11 @@
 <script setup>
     import { reactive, ref, defineEmits } from "vue"
     import TodoButton from "./TodoButton.vue"
-    let todo = ref("")
-
     const todoState = reactive({
             todo: "",
             invalid: null,
             errMsg:"",
         })
-
     const emit = defineEmits(['create-todo'])
     const createTodo = () => {
         todoState.invalid = null;
@@ -18,12 +15,9 @@
             todoState.todo = ""
             return;
         }
-
         todoState.invalid = true;
         todoState.errMsg = "Todo Can't be empty"
     }
-
-
 </script>
 
 
