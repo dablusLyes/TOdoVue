@@ -74,7 +74,7 @@ fetchTodolist();
       />
     </ul>
     <p v-if="todoList.length<=0" class="todos-msg">😔 No todo's </p>
-    <p v-else-if="todoComputed" class="todos-msg"> <img src='../assets/gc.png' style="height: 25px;" > you've taken care of everything ! </p>
+    <p v-else-if="todoComputed" class="todos-msg"> <img src='../assets/gar.png' style="height: 25px;" > you've taken care of everything ! </p>
   </main>
 </template>
 
